@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    sam-aws-layer
+
+     SAM Template for a DynamoDB Layer
+
+Resources:
+    DynamoDBLayer:
+        Type: AWS::Serverless::LayerVersion
+        Properties:
+            Description: DynamoDB for serverlass app
+            ContentUri: './dist/'
+            CompatibleRuntimes:
+                - nodejs20.x
+            LicenseInfo: 'MIT'
+            RetentionPolicy: Delete
+
+Outputs:
+    DynamoDBLayerArn:
+        Description: 'AWS DynamoDB Layer'
+        Value: !Ref DynamoDBLayer
